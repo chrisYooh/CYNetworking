@@ -6,9 +6,13 @@
 //  Copyright © 2018 杨一凡. All rights reserved.
 //
 
+#import "CYNetworking.h"
+
 #import "ViewController.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) CYRequestItem *reqItem;
 
 @end
 
@@ -16,8 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
+    
+    _reqItem = [[CYRequestItem alloc] init];
+    _reqItem.absoluteUrl = @"https://m.nonobank.com/feserver/common/current/";
+    [_reqItem startWithCallback:^(CYResponseItem * _Nonnull respItem) {
+        NSLog(@"%@", respItem);
+    }];
 
+}
 
 @end

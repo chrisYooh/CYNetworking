@@ -71,6 +71,7 @@
 		F25D5DCF21916AD300F978DB /* CYNetworkingTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYNetworkingTypes.h; sourceTree = "<group>"; };
 		F25D5DD42191707F00F978DB /* CYRequestPool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYRequestPool.h; sourceTree = "<group>"; };
 		F25D5DD52191707F00F978DB /* CYRequestPool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYRequestPool.m; sourceTree = "<group>"; };
+		F25D5DD721917B0200F978DB /* CYNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYNetworking.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +177,7 @@
 		F25D5DC121913B1900F978DB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F25D5DD721917B0200F978DB /* CYNetworking.h */,
 				F25D5DD32191700700F978DB /* Support */,
 				F25D5DD22191700300F978DB /* Config */,
 				F25D5DD021916FF700F978DB /* RequestItem */,
