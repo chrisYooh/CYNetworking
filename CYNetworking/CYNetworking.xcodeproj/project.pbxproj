@@ -16,6 +16,11 @@
 		F25D5D9D2191393E00F978DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F25D5D9C2191393E00F978DB /* main.m */; };
 		F25D5DA72191393E00F978DB /* CYNetworkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F25D5DA62191393E00F978DB /* CYNetworkingTests.m */; };
 		F25D5DB22191393E00F978DB /* CYNetworkingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F25D5DB12191393E00F978DB /* CYNetworkingUITests.m */; };
+		F25D5DC421913EA200F978DB /* CYRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F25D5DC321913EA200F978DB /* CYRequestItem.m */; };
+		F25D5DC72191412000F978DB /* CYResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F25D5DC62191412000F978DB /* CYResponseItem.m */; };
+		F25D5DCA219147FD00F978DB /* CYNetworkingConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F25D5DC9219147FD00F978DB /* CYNetworkingConfig.m */; };
+		F25D5DCD2191658200F978DB /* AFHTTPSessionManager+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F25D5DCC2191658200F978DB /* AFHTTPSessionManager+CYCategory.m */; };
+		F25D5DD62191707F00F978DB /* CYRequestPool.m in Sources */ = {isa = PBXBuildFile; fileRef = F25D5DD52191707F00F978DB /* CYRequestPool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,17 @@
 		F25D5DAD2191393E00F978DB /* CYNetworkingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CYNetworkingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25D5DB12191393E00F978DB /* CYNetworkingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYNetworkingUITests.m; sourceTree = "<group>"; };
 		F25D5DB32191393E00F978DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F25D5DC221913EA200F978DB /* CYRequestItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYRequestItem.h; sourceTree = "<group>"; };
+		F25D5DC321913EA200F978DB /* CYRequestItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYRequestItem.m; sourceTree = "<group>"; };
+		F25D5DC52191412000F978DB /* CYResponseItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYResponseItem.h; sourceTree = "<group>"; };
+		F25D5DC62191412000F978DB /* CYResponseItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYResponseItem.m; sourceTree = "<group>"; };
+		F25D5DC8219147FD00F978DB /* CYNetworkingConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYNetworkingConfig.h; sourceTree = "<group>"; };
+		F25D5DC9219147FD00F978DB /* CYNetworkingConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYNetworkingConfig.m; sourceTree = "<group>"; };
+		F25D5DCB2191658200F978DB /* AFHTTPSessionManager+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+CYCategory.h"; sourceTree = "<group>"; };
+		F25D5DCC2191658200F978DB /* AFHTTPSessionManager+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+CYCategory.m"; sourceTree = "<group>"; };
+		F25D5DCF21916AD300F978DB /* CYNetworkingTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYNetworkingTypes.h; sourceTree = "<group>"; };
+		F25D5DD42191707F00F978DB /* CYRequestPool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYRequestPool.h; sourceTree = "<group>"; };
+		F25D5DD52191707F00F978DB /* CYRequestPool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYRequestPool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,8 +176,51 @@
 		F25D5DC121913B1900F978DB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F25D5DD32191700700F978DB /* Support */,
+				F25D5DD22191700300F978DB /* Config */,
+				F25D5DD021916FF700F978DB /* RequestItem */,
+				F25D5DD121916FFC00F978DB /* ResponseItem */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		F25D5DD021916FF700F978DB /* RequestItem */ = {
+			isa = PBXGroup;
+			children = (
+				F25D5DC221913EA200F978DB /* CYRequestItem.h */,
+				F25D5DC321913EA200F978DB /* CYRequestItem.m */,
+			);
+			path = RequestItem;
+			sourceTree = "<group>";
+		};
+		F25D5DD121916FFC00F978DB /* ResponseItem */ = {
+			isa = PBXGroup;
+			children = (
+				F25D5DC52191412000F978DB /* CYResponseItem.h */,
+				F25D5DC62191412000F978DB /* CYResponseItem.m */,
+			);
+			path = ResponseItem;
+			sourceTree = "<group>";
+		};
+		F25D5DD22191700300F978DB /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F25D5DC8219147FD00F978DB /* CYNetworkingConfig.h */,
+				F25D5DC9219147FD00F978DB /* CYNetworkingConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		F25D5DD32191700700F978DB /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F25D5DCF21916AD300F978DB /* CYNetworkingTypes.h */,
+				F25D5DCB2191658200F978DB /* AFHTTPSessionManager+CYCategory.h */,
+				F25D5DCC2191658200F978DB /* AFHTTPSessionManager+CYCategory.m */,
+				F25D5DD42191707F00F978DB /* CYRequestPool.h */,
+				F25D5DD52191707F00F978DB /* CYRequestPool.m */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,8 +379,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25D5DC72191412000F978DB /* CYResponseItem.m in Sources */,
+				F25D5DD62191707F00F978DB /* CYRequestPool.m in Sources */,
+				F25D5DCA219147FD00F978DB /* CYNetworkingConfig.m in Sources */,
 				F25D5D922191393D00F978DB /* ViewController.m in Sources */,
+				F25D5DCD2191658200F978DB /* AFHTTPSessionManager+CYCategory.m in Sources */,
 				F25D5D9D2191393E00F978DB /* main.m in Sources */,
+				F25D5DC421913EA200F978DB /* CYRequestItem.m in Sources */,
 				F25D5D8F2191393D00F978DB /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,7 +565,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Chris.CYNetworking;
+				PRODUCT_BUNDLE_IDENTIFIER = com.patest.cynetworking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -519,7 +583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Chris.CYNetworking;
+				PRODUCT_BUNDLE_IDENTIFIER = com.patest.cynetworking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
