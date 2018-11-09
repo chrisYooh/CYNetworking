@@ -16,6 +16,25 @@
     
     CYResponseItem *tmpItem = [[CYResponseItem alloc] init];
     
+    /* 直接返回失败 */
+    if ([rawData isKindOfClass:[NSError class]]) {
+        NSError *tmpError = (NSError *)rawData;
+        tmpItem.isSuccess = NO;
+        tmpItem.error = tmpError;
+        tmpItem.errorCode = tmpError.code;
+        tmpItem.errorMessage = tmpError.domain;
+        return tmpItem;
+    }
+    
+    /* 返回数据异常 */
+    if (NO == [rawData isKindOfClass:[NSData class]]) {
+        NSError *tmpError = [NSError errorWithDomain:@"数据返回未知错误" code:-1 userInfo:nil];
+        tmpItem.isSuccess = NO;
+        tmpItem.error = tmpError;
+        tmpItem.errorCode = tmpError.code;
+        tmpItem.errorMessage = tmpError.domain;
+        return tmpItem;
+    }
     tmpItem.rawData = rawData;
     
     /* Json 转换 */
