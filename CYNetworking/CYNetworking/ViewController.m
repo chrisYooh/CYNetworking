@@ -21,12 +21,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _reqItem = [[CYRequestItem alloc] init];
-    _reqItem.absoluteUrl = @"https://m.nonobank.com/feserver/common/current/";
-    [_reqItem startWithCallback:^(CYResponseItem * _Nonnull respItem) {
-        NSLog(@"%@", respItem);
-    }];
+//    _reqItem = [[CYRequestItem alloc] init];
+//    _reqItem.absoluteUrl = @"http://192.168.5.200:8888";
+//    [_reqItem startWithCallback:^(CYResponseItem * _Nonnull respItem) {
+//        if (NO == respItem.isSuccess) {
+//            NSLog(@"%@", respItem.errorMessage);
+//            return ;
+//        }
+//        NSLog(@"Success");
+//    }];
+    
+    UIImage *tmpImage = [UIImage imageNamed:@"test2"];
+    NSData *tmpData = UIImagePNGRepresentation(tmpImage);
 
+    _reqItem = [[CYRequestItem alloc] init];
+    _reqItem.reqType = CYRequestTypePost;
+    _reqItem.uploadKey = @"image";
+    _reqItem.uploadData = tmpData;
+    _reqItem.uploadDstFileName = @"xxx.png";
+    _reqItem.uploadDataType = @"image/png";
+    _reqItem.absoluteUrl = @"http://192.168.5.200:8888/user/reg/";
+    _reqItem.parameters = @{@"type1":@"value1"};
+    [_reqItem startWithCallback:^(CYResponseItem * _Nonnull respItem) {
+        if (NO == respItem.isSuccess) {
+            NSLog(@"Error %@", respItem.errorMessage);
+            return ;
+        }
+        NSLog(@"Success %@", respItem.responseData);
+    }];
 }
+
 
 @end

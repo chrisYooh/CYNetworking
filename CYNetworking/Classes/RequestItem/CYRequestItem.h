@@ -28,6 +28,12 @@ typedef void (^cyRequestBlock) (CYResponseItem *respItem);
 @property (nonatomic, strong) NSDictionary *headerParas;    /* 希望添加到请求头的参数 */
 @property (nonatomic, strong) NSDictionary *parameters;     /* 请求的业务相关的参数 */
 
+/* Upload */
+@property (nonatomic, strong) NSString *uploadKey;          /* 上传Key */
+@property (nonatomic, strong) NSData *uploadData;           /* 上传时使用，目前只支持单数据上传 */
+@property (nonatomic, strong) NSString *uploadDstFileName;  /* 上传目标文件名 */
+@property (nonatomic, strong) NSString *uploadDataType;     /* 上传数据的格式 */
+
 - (void)startWithCallback:(cyRequestBlock)callback;
 - (void)cancelRequest;
 

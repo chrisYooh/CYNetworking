@@ -184,6 +184,15 @@
     return tmpMulDic.copy;
 }
 
+/* 上传参数处理 */
+- (void)formData:(id<AFMultipartFormData>)formData fillParas:(NSDictionary *)paras {
+    NSArray *keyArray = paras.allKeys;
+    for (NSString *tmpKey in keyArray) {
+        NSString *tmpVal = [paras objectForKey:tmpKey];
+        [formData appendPartWithFormData:[tmpVal dataUsingEncoding:NSUTF8StringEncoding] name:tmpKey];
+    }
+}
+
 #pragma mark - Request Get
 
 - (void)getWithCallback:(cyRequestBlock)callback {
@@ -244,7 +253,7 @@
     _reqSession =
     [[self userdefManager]
      POST:[self requestUrlStr]
-     parameters:_parameters
+     parameters:[self requestAllParas]
      progress:^(NSProgress * _Nonnull uploadProgress) {
          /* Do nothing */
      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -265,6 +274,42 @@
      }];
 }
 
+- (void)uploadPostWithCallback:(cyRequestBlock)callback {
+    
+    @weakify(self);
+    _reqSession =
+    [[self userdefManager]
+     POST:[self requestUrlStr]
+     parameters:nil
+     constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+         @strongify(self);
+         
+         [self formData:formData fillParas:[self requestAllParas]];
+         [formData appendPartWithFileData:self.uploadData
+                                     name:self.uploadKey
+                                 fileName:self.uploadDstFileName
+                                 mimeType:self.uploadDataType];
+         
+     } progress:^(NSProgress * _Nonnull uploadProgress) {
+         //NSLog(@"UploadProgress %@", uploadProgress);
+         
+     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+         @strongify(self);
+         CYResponseItem *tmpResp = [CYResponseItem itemWithData:responseObject];
+         tmpResp.refReqItem = self;
+         if (nil != callback) {
+             callback(tmpResp);
+         }
+         
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         @strongify(self);
+         CYResponseItem *tmpResp = [CYResponseItem itemWithData:error];
+         tmpResp.refReqItem = self;
+         if (nil != callback) {
+             callback(tmpResp);
+         }
+     }];
+}
 
 #pragma mark - User Interface
 
@@ -292,9 +337,7 @@
             }
         }];
         
-        
     } else if (CYRequestTypePost == _reqType) {
-        /* POST */
         [self postWithCallback:^(CYResponseItem * _Nonnull respItem) {
             @strongify(self);
             self.isRequesting = NO;
@@ -305,7 +348,19 @@
             }
         }];
         
-    } else {
+    } else if (CYRequestTypePostUpload == _reqType) {
+        [self uploadPostWithCallback:^(CYResponseItem * _Nonnull respItem) {
+            @strongify(self);
+            self.isRequesting = NO;
+            [[CYRequestPool sharedInstance] removeItem:self];
+            [self logResponse:respItem];
+            if (nil != callback) {
+                callback(respItem);
+            }
+        }];
+    }
+    
+    else {
         _isRequesting = NO;
         [[CYRequestPool sharedInstance] removeItem:self];
     }

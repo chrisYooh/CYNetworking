@@ -47,6 +47,7 @@ typedef NS_ENUM (NSInteger, CYRequestType) {
     
     CYRequestTypeGet,
     CYRequestTypePost,
+    CYRequestTypePostUpload,    
     CYRequestTypeHead,          /* 暂未支持 */
     CYRequestTypePut,           /* 暂未支持 */
     CYRequestTypeDelete,        /* 暂未支持 */
