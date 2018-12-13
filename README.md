@@ -10,7 +10,7 @@ pod 'CYNetworking', :git => 'https://github.com/chrisYooh/CYNetworking.git', :co
 #import <CYNetworking/CYNetworking.h>
 
 ## 3.公共配置
-在公共场景，比如appLaunch时，配置[主机地址][公共头参数][公共body参数]
+在公共场景，比如appLaunch时，配置 [主机地址] [公共头参数] [公共body参数]
 ```
 [CYNetworkingConfig sharedConfig].defaultHost = @"https//...";
 [CYNetworkingConfig sharedConfig].commonHeaderParams = {@"A":@"a", @"B":@"b"};
@@ -18,6 +18,7 @@ pod 'CYNetworking', :git => 'https://github.com/chrisYooh/CYNetworking.git', :co
 ```
 
 ## 4.简单请求(不需要关心defaultHost)
+配置 [请求方式] [完整请求地址] [请求参数]
 ```
 CYRequestItem *registReqItem = [[CYRequestItem alloc] init];
 registReqItem.reqType = CYRequestTypeGet;
@@ -36,6 +37,7 @@ registReqItem.parameters = @{@"A":@"a", @"B":@"b"};
 ```
 
 ## 5.规范请求
+配置 [请求方式] [业务请求地址] [请求参数]
 ```
 CYRequestItem *registReqItem = [[CYRequestItem alloc] init];
 registReqItem.reqType = CYRequestTypeGet;
