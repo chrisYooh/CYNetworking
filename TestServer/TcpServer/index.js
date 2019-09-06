@@ -1,7 +1,9 @@
 var net = require('net');
 
-var HOST = '127.0.0.1';
+// var HOST = '127.0.0.1';
+var HOST = '172.20.10.14';
 var PORT = 8888;
+var i = 0;
 
 // 创建一个TCP服务器实例，调用listen函数开始监听指定端口
 // 传入net.createServer()的回调函数将作为”connection“事件的处理函数
@@ -15,7 +17,9 @@ net.createServer(function(sock) {
     sock.on('data', function(data) {
         console.log('DATA ' + sock.remoteAddress + ': ' + data);
         // 回发该数据，客户端将收到来自服务端的数据
-        sock.write('You said "' + data + '"');
+        // sock.write('You said "' + data + '"');
+        sock.write('收到数据乐！' + i);
+        i++;
     });
 
     // 为这个socket实例添加一个"close"事件处理函数
