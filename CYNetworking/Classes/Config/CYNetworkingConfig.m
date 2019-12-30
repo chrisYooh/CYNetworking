@@ -15,6 +15,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedConfig = [[CYNetworkingConfig alloc] init];
+        _sharedConfig.autoLog = YES;
     });
     return _sharedConfig;
 }

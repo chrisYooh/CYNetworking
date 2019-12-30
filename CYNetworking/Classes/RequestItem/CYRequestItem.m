@@ -58,6 +58,10 @@
 #pragma mark - MISC
 
 - (void)logRequest {
+    if (NO == [CYNetworkingConfig sharedConfig].autoLog) {
+        return;
+    }
+    
     NSLog(@"\n【Net Request Start】"
           "\nUrl : %@"
           "\nParas : %@",
@@ -67,6 +71,10 @@
 
 - (void)logResponse:(CYResponseItem *)respItem {
     
+    if (NO == [CYNetworkingConfig sharedConfig].autoLog) {
+        return;
+    }
+
     NSLog(@"\n【Request Info】"
           "\nUrl : %@"
           "\nParas : %@",
@@ -291,7 +299,7 @@
                                  mimeType:self.uploadDataType];
          
      } progress:^(NSProgress * _Nonnull uploadProgress) {
-         //NSLog(@"UploadProgress %@", uploadProgress);
+         //CYNLog(@"UploadProgress %@", uploadProgress);
          
      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
          @strongify(self);

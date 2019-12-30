@@ -17,9 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  a 出错时， NSError *
  *  b 正常时， 一个Json对象(一般是NSDictionary *)
  */
-typedef id (^cyNetworkingUnboxBlock) (id jsonObj);
+typedef id _Nullable (^cyNetworkingUnboxBlock) (id jsonObj);
 
 @interface CYNetworkingConfig : NSObject
+
+@property (nonatomic, assign) BOOL autoLog;                                             /* 是否自动打印日志 */
 
 @property (nonatomic, strong) NSString *defaultHost;                                    /* 默认请求主机(公共地址) */
 @property (nonatomic, assign) CYRequestItemReqContentType defaultReqContentType;        /* 默认请求格式 */
