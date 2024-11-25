@@ -8,6 +8,8 @@ var multer = require('multer');
 var app = express();
 app.use(express.static('htmls'));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.text());
+app.use(bodyParser.json());
 
 app.get("/getTest", function (req, res) {
 
@@ -16,7 +18,7 @@ app.get("/getTest", function (req, res) {
 
     /* 参数获取 */
     var paras = url.parse(req.url, true).query;
-    console.log(paras)
+    console.log("GET Params: ", JSON.stringify(paras))
 
     res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
     res.write("Get Test: http:" + host + ":" + port + "\n");
@@ -29,13 +31,17 @@ app.post("/postTest", function (req, res) {
     var host = server.address().host;
     var port = server.address().port;
 
-    /* 参数获取 */
+    /* Query参数获取 */
     var paras = url.parse(req.url, true).query;
-    console.log(paras)
+    console.log("POST Params: ", JSON.stringify(paras))
+
+    /* Body参数获取 */
+    console.log("POST Body: ", req.body)
 
     res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
     res.write("Post Test:" + host + ":" + port + "\n");
     res.write(JSON.stringify(paras));
+    res.write(JSON.stringify(req.body));
     res.end();
 });
 
